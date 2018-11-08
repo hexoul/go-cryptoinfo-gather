@@ -1,25 +1,26 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"strings"
 
 	"github.com/jasonlvhit/gocron"
 
-	"github.com/hexoul/go-coinmarketcap"
 	"github.com/hexoul/go-coinmarketcap/statistics"
 	"github.com/hexoul/go-coinmarketcap/types"
 )
 
 var (
-	targetSymbol    string
-	targetAddr      string
-	kucoinAccesskey string
-	kucoinSecretkey string
+	targetSymbol string
+	targetAddr   string
+	accessKey    map[string]string
+	secretKey    map[string]string
 )
 
 func init() {
+	accessKey = map[string]string{}
+	secretKey = map[string]string{}
+
 	for _, val := range os.Args {
 		arg := strings.Split(val, "=")
 		if len(arg) < 2 {
@@ -28,10 +29,10 @@ func init() {
 			targetSymbol = arg[1]
 		} else if arg[0] == "-targetAddr" {
 			targetAddr = arg[1]
-		} else if arg[0] == "-kucoinAccesskey" {
-			kucoinAccesskey = arg[1]
-		} else if arg[0] == "-kucoinSecret" {
-			kucoinSecretkey = arg[1]
+		} else if strings.Contains(arg[0], "accesskey") {
+			accessKey[strings.Split(arg[0], ":")[0][1:]] = arg[1]
+		} else if strings.Contains(arg[0], "secretkey") {
+			secretKey[strings.Split(arg[0], ":")[0][1:]] = arg[1]
 		}
 	}
 
@@ -41,12 +42,14 @@ func init() {
 }
 
 func main() {
-	if ret, err := coinmarketcap.GetInstance().CryptoInfo(&types.Options{
-		Symbol: targetSymbol,
-	}); err == nil {
-		fmt.Println(ret.CryptoInfo[targetSymbol].Name)
-	}
+	quotes := "USD,BTC,ETH"
+
+	statistics.GatherCryptoQuote(&types.Options{
+		Symbol:  targetSymbol,
+		Convert: quotes,
+	}, gocron.Every(30).Seconds())
 
 	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(2).Seconds())
+
 	<-gocron.Start()
 }

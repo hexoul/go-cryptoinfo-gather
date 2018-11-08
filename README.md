@@ -10,10 +10,10 @@ go run main.go \
 -targetSymbol=[TOKEN_SYMBOL] \
 -targetAddr=[TOKEN_CONTRACT_ADDR] \
 -cmcApikey=[CMC_API_KEY] \
--coinsuperAccesskey=[COINSUPER_ACCESS_KEY] \
--coinsuperSecret=[COINSUPER_SECRET_KEY] \
--kucoinAccesskey=[KUCOIN_ACCESS_KEY] \
--kucoinSecret=[KUCOIN_SECRET_KEY]
+-coinsuper:accesskey=[COINSUPER_ACCESS_KEY] \
+-coinsuper:secretkey=[COINSUPER_SECRET_KEY] \
+-kucoin:accesskey=[KUCOIN_ACCESS_KEY] \
+-kucoin:secretkey=[KUCOIN_SECRET_KEY]
 ```
 ...
 
