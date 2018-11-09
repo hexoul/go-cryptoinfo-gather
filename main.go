@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"strings"
 
@@ -45,6 +46,9 @@ func init() {
 }
 
 func main() {
+	fmt.Println("Scheduling...")
+
+	// ExchangeMarketPairs
 	for _, slug := range strings.Split(targetSlugs, ",") {
 		statistics.GatherExchangeMarketPairs(&types.Options{
 			Slug:    slug,
@@ -52,12 +56,15 @@ func main() {
 		}, targetSymbol, gocron.Every(2).Minutes())
 	}
 
+	// CryptoQuote
 	statistics.GatherCryptoQuote(&types.Options{
 		Symbol:  targetSymbol,
 		Convert: targetQuotes,
 	}, gocron.Every(2).Minutes())
 
+	// TokenMetric
 	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(2).Minutes())
 
+	fmt.Printf("Done\nStarting...\n")
 	<-gocron.Start()
 }
