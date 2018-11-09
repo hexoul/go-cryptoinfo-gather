@@ -68,7 +68,7 @@ func GitPushChanges() error {
 	}
 
 	// Commit
-	if _, err = w.Commit("test go-git commit", &git.CommitOptions{
+	if _, err = w.Commit("Commit report.log changed", &git.CommitOptions{
 		Author: &object.Signature{
 			Name:  "hexoul",
 			Email: "crosien@gmail.com",
