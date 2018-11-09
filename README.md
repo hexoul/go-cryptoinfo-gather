@@ -16,6 +16,8 @@ All options are not mandatory even if you do not use related APIs.
 
 ```bash
 go run main.go \
+-gitID=[GIT_ID] \
+-gitPW=[GIT_PW] \
 -logpath=[LOG_PATH] \
 -targetSymbol=[TOKEN_SYMBOL] \
 -targetAddr=[TOKEN_CONTRACT_ADDR] \
