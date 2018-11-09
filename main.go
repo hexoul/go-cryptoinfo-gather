@@ -98,20 +98,20 @@ func main() {
 		statistics.GatherExchangeMarketPairs(&types.Options{
 			Slug:    slug,
 			Convert: targetQuotes,
-		}, targetSymbol, gocron.Every(2).Minutes())
+		}, targetSymbol, gocron.Every(60).Minutes())
 	}
 
 	// CryptoQuote
 	statistics.GatherCryptoQuote(&types.Options{
 		Symbol:  targetSymbol,
 		Convert: targetQuotes,
-	}, gocron.Every(2).Minutes())
+	}, gocron.Every(60).Minutes())
 
 	// TokenMetric
-	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(2).Minutes())
+	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(10).Minutes())
 
 	// Git
-	gocron.Every(2).Minutes().Do(GitPushChanges)
+	gocron.Every(60).Minutes().Do(GitPushChanges)
 
 	fmt.Printf("Done\nStarting...\n")
 	<-gocron.Start()
