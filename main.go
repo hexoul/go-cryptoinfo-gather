@@ -40,9 +40,9 @@ func init() {
 		}
 	}
 
-	if targetSymbol == "" || targetAddr == "" {
-		panic("TARGET INFO REQUIRED")
-	}
+	// if targetSymbol == "" || targetAddr == "" {
+	// 	panic("TARGET INFO REQUIRED")
+	// }
 }
 
 func main() {
