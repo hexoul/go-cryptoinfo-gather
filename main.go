@@ -91,28 +91,44 @@ func GitPushChanges() error {
 }
 
 func main() {
-	fmt.Println("Scheduling...")
+	fmt.Println("Initialzing...")
 
-	// ExchangeMarketPairs
-	for _, slug := range strings.Split(targetSlugs, ",") {
-		statistics.GatherExchangeMarketPairs(&types.Options{
-			Slug:    slug,
-			Convert: targetQuotes,
-		}, targetSymbol, gocron.Every(30).Minutes())
-	}
-
-	// CryptoQuote
-	statistics.GatherCryptoQuote(&types.Options{
+	cryptoQuoteOptions := &types.Options{
 		Symbol:  targetSymbol,
 		Convert: targetQuotes,
-	}, gocron.Every(30).Minutes())
+	}
+
+	var exchangeMarketPairsOptions []*types.Options
+	for _, slug := range strings.Split(targetSlugs, ",") {
+		exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
+			Slug:    slug,
+			Convert: targetQuotes,
+		})
+		// statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[i])
+	}
+
+	// statistics.TaskGatherCryptoQuote(cryptoQuoteOptions)
+	// statistics.TaskGatherTokenMetric(targetSymbol, targetAddr)
+
+	fmt.Printf("Done\nScheduling...\n")
+
+	// CryptoQuote
+	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(10).Minutes())
+	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(1).Day().At("23:59"))
+
+	// ExchangeMarketPairs
+	for i := range exchangeMarketPairsOptions {
+		statistics.GatherExchangeMarketPairs(exchangeMarketPairsOptions[i], targetSymbol, gocron.Every(10).Minutes())
+		statistics.GatherExchangeMarketPairs(exchangeMarketPairsOptions[i], targetSymbol, gocron.Every(1).Day().At("23:59"))
+	}
 
 	// TokenMetric
-	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Hour())
+	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(30).Minutes())
+	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("23:59"))
 
 	// Git
-	gocron.Every(60).Minutes().Do(GitPushChanges)
+	gocron.Every(1).Hour().Do(GitPushChanges)
 
-	fmt.Printf("Done\nStarting...\n")
+	fmt.Printf("Done\nStart!!\n")
 	<-gocron.Start()
 }
