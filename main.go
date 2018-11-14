@@ -114,17 +114,17 @@ func main() {
 
 	// CryptoQuote
 	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(10).Minutes())
-	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(1).Day().At("23:59"))
+	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(1).Day().At("00:00"))
 
 	// ExchangeMarketPairs
 	for i := range exchangeMarketPairsOptions {
 		statistics.GatherExchangeMarketPairs(exchangeMarketPairsOptions[i], targetSymbol, gocron.Every(10).Minutes())
-		statistics.GatherExchangeMarketPairs(exchangeMarketPairsOptions[i], targetSymbol, gocron.Every(1).Day().At("23:59"))
+		statistics.GatherExchangeMarketPairs(exchangeMarketPairsOptions[i], targetSymbol, gocron.Every(1).Day().At("00:00"))
 	}
 
 	// TokenMetric
 	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(30).Minutes())
-	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("23:59"))
+	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("00:00"))
 
 	// Git
 	gocron.Every(1).Hour().Do(GitPushChanges)
