@@ -99,16 +99,16 @@ func main() {
 	}
 
 	var exchangeMarketPairsOptions []*types.Options
-	for _, slug := range strings.Split(targetSlugs, ",") {
+	for i, slug := range strings.Split(targetSlugs, ",") {
 		exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
 			Slug:    slug,
 			Convert: targetQuotes,
 		})
-		// statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[i])
+		statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[i], slug)
 	}
 
-	// statistics.TaskGatherCryptoQuote(cryptoQuoteOptions)
-	// statistics.TaskGatherTokenMetric(targetSymbol, targetAddr)
+	statistics.TaskGatherCryptoQuote(cryptoQuoteOptions)
+	statistics.TaskGatherTokenMetric(targetSymbol, targetAddr)
 
 	fmt.Printf("Done\nScheduling...\n")
 
