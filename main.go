@@ -113,6 +113,15 @@ func main() {
 	// Initialize TokenMetric
 	statistics.TaskGatherTokenMetric(targetSymbol, targetAddr)
 
+	// Initialize OHLCV
+	var ohlcvOptions []*types.Options
+	for _, quote := range strings.Split(targetQuotes, ",") {
+		ohlcvOptions = append(ohlcvOptions, &types.Options{
+			Symbol:  targetSymbol,
+			Convert: quote,
+		})
+	}
+
 	fmt.Printf("Done\nScheduling...\n")
 
 	// Schedule CryptoQuote
@@ -128,6 +137,11 @@ func main() {
 	// Schedule TokenMetric
 	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(30).Minutes())
 	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("00:00"))
+
+	// Schedule OHLCV
+	for _, option := range ohlcvOptions {
+		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("00:00"))
+	}
 
 	// Schedule Git commit and push
 	gocron.Every(1).Hour().Do(GitPushChanges)
