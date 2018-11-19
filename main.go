@@ -126,21 +126,21 @@ func main() {
 
 	// Schedule CryptoQuote
 	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(10).Minutes())
-	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(1).Day().At("00:00"))
+	statistics.GatherCryptoQuote(cryptoQuoteOptions, gocron.Every(1).Day().At("23:59"))
 
 	// Schedule ExchangeMarketPairs
 	for _, option := range exchangeMarketPairsOptions {
 		statistics.GatherExchangeMarketPairs(option, targetSymbol, gocron.Every(10).Minutes())
-		statistics.GatherExchangeMarketPairs(option, targetSymbol, gocron.Every(1).Day().At("00:00"))
+		statistics.GatherExchangeMarketPairs(option, targetSymbol, gocron.Every(1).Day().At("23:59"))
 	}
 
 	// Schedule TokenMetric
 	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(30).Minutes())
-	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("00:00"))
+	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("23:59"))
 
 	// Schedule OHLCV
 	for _, option := range ohlcvOptions {
-		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("00:00"))
+		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("09:05"))
 	}
 
 	// Schedule Git commit and push
