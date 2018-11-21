@@ -106,6 +106,7 @@ func main() {
 		exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
 			Slug:    slug,
 			Convert: targetQuotes,
+			Limit:   200,
 		})
 		statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[i], slug)
 	}
