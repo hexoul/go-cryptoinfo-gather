@@ -12,7 +12,7 @@ go build
 ```
 
 ## Usage
-All options are not mandatory even if you do not use related APIs.
+All options are not mandatory unless you use related APIs.
 
 ```bash
 go run main.go \
