@@ -12,8 +12,16 @@ import (
 )
 
 var (
-	testAccessKey = map[string]string{"kucoin": "YOUR_ACCESS_KEY"}
-	testSecretKey = map[string]string{"kucoin": "YOUR_SECRET_KEY"}
+	testAccessKey = map[string]string{
+		"coinsuper": "YOUR_ACCESS_KEY",
+		"kucoin":    "YOUR_ACCESS_KEY",
+		"abcc":      "YOUR_ACCESS_KEY",
+	}
+	testSecretKey = map[string]string{
+		"coinsuper": "YOUR_SECRET_KEY",
+		"kucoin":    "YOUR_SECRET_KEY",
+		"abcc":      "YOUR_SECRET_KEY",
+	}
 )
 
 func init() {
