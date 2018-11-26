@@ -30,8 +30,8 @@ go run main.go \
 -coinsuper:secretkey=[COINSUPER_SECRET_KEY] \
 -kucoin:accesskey=[KUCOIN_ACCESS_KEY] \
 -kucoin:secretkey=[KUCOIN_SECRET_KEY] \
--abcc:accesskey=[KUCOIN_ACCESS_KEY] \
--abcc:secretkey=[KUCOIN_SECRET_KEY]
+-abcc:accesskey=[ABCC_ACCESS_KEY] \
+-abcc:secretkey=[ABCC_SECRET_KEY] \
 ...
 ```
 

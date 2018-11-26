@@ -61,6 +61,9 @@ func getKucoinBalnace(k *kucoin.Kucoin) (meta, eth, btc float64) {
 }
 
 func getCoinsuperBalnace() (meta, eth, btc string) {
+	if coinsuper.GetInstance() == nil {
+		return
+	}
 	if info, err := coinsuper.GetInstance().UserAssetInfo(nil); err == nil {
 		meta = info.Assets["META"].Total
 		eth = info.Assets["ETH"].Total
@@ -71,6 +74,9 @@ func getCoinsuperBalnace() (meta, eth, btc string) {
 }
 
 func getAbccBalnace() (meta, eth, btc float64) {
+	if abcc.GetInstance() == nil {
+		return
+	}
 	if me, err := abcc.GetInstance().Me(nil); err == nil {
 		for _, v := range me.Accounts {
 			if v.Currency == "meta" {
