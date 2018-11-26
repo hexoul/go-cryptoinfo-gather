@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -32,6 +33,15 @@ func init() {
 			gitPW = arg[1]
 		}
 	}
+}
+
+func sumStrFloat(s1, s2 string) (sum float64) {
+	f1, err1 := strconv.ParseFloat(s1, 64)
+	f2, err2 := strconv.ParseFloat(s2, 64)
+	if err1 == nil && err2 == nil {
+		sum = f1 + f2
+	}
+	return
 }
 
 // gitPushChanges commits log changes and pushs it

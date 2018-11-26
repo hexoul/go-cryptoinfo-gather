@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"strconv"
 	"time"
 
 	kucoin "github.com/eeonevision/kucoin-go"
@@ -67,15 +66,6 @@ func getCoinsuperBalnace() (meta, eth, btc string) {
 		eth = info.Assets["ETH"].Total
 		btc = info.Assets["BTC"].Total
 		logBalance("coinsuper", meta, eth, btc)
-	}
-	return
-}
-
-func sumStrFloat(s1, s2 string) (sum float64) {
-	f1, err1 := strconv.ParseFloat(s1, 64)
-	f2, err2 := strconv.ParseFloat(s2, 64)
-	if err1 == nil && err2 == nil {
-		sum = f1 + f2
 	}
 	return
 }

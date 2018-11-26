@@ -90,6 +90,9 @@ func main() {
 		})
 	}
 
+	// Initialize Balance
+	GetBalances(&clients)
+
 	fmt.Printf("Done\nScheduling...\n")
 
 	// Schedule CryptoQuote
@@ -110,6 +113,9 @@ func main() {
 	for _, option := range ohlcvOptions {
 		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("09:20"))
 	}
+
+	// Schedule Balance
+	gocron.Every(10).Minutes().Do(GetBalances, &clients)
 
 	// Schedule Git commit and push
 	gocron.Every(1).Hour().Do(gitPushChanges)
