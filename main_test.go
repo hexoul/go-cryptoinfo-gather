@@ -5,6 +5,8 @@ import (
 	"time"
 
 	kucoin "github.com/eeonevision/kucoin-go"
+	abcc "github.com/hexoul/go-abcc"
+	coinsuper "github.com/hexoul/go-coinsuper"
 
 	"gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing/object"
@@ -13,19 +15,25 @@ import (
 
 var (
 	testAccessKey = map[string]string{
-		"coinsuper": "YOUR_ACCESS_KEY",
 		"kucoin":    "YOUR_ACCESS_KEY",
+		"coinsuper": "YOUR_ACCESS_KEY",
 		"abcc":      "YOUR_ACCESS_KEY",
 	}
 	testSecretKey = map[string]string{
-		"coinsuper": "YOUR_SECRET_KEY",
 		"kucoin":    "YOUR_SECRET_KEY",
+		"coinsuper": "YOUR_SECRET_KEY",
 		"abcc":      "YOUR_SECRET_KEY",
 	}
+
+	kucoinClient    *kucoin.Kucoin
+	abccClient      *abcc.Client
+	coinsuperClient *coinsuper.Client
 )
 
 func init() {
-
+	kucoinClient = kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
+	abccClient = abcc.GetInstanceWithKey(testAccessKey["abcc"], testSecretKey["abcc"])
+	coinsuperClient = coinsuper.GetInstanceWithKey(testAccessKey["coinsuper"], testSecretKey["coinsuper"])
 }
 
 func TestGit(t *testing.T) {
@@ -59,15 +67,15 @@ func TestGit(t *testing.T) {
 }
 
 func TestKucoinBalance(t *testing.T) {
-	k := kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
-	if _, err := k.GetCoinBalance("BTC"); err != nil {
+	if bal, err := kucoinClient.GetCoinBalance("BTC"); err != nil {
 		t.FailNow()
+	} else {
+		t.Logf("%f %f\n", bal.Balance, bal.FreezeBalance)
 	}
 }
 
 func TestKucoinListMergedDealtOrders(t *testing.T) {
-	k := kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
-	if _, err := k.ListMergedDealtOrders("ETH-BTC", "BUY", 20, 1, 0, 0); err != nil {
+	if _, err := kucoinClient.ListMergedDealtOrders("ETH-BTC", "BUY", 20, 1, 0, 0); err != nil {
 		t.FailNow()
 	}
 }

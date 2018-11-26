@@ -154,6 +154,16 @@
   version = "v1.4.0"
 
 [[projects]]
+  name = "github.com/hexoul/go-abcc"
+  packages = [
+    ".",
+    "types",
+    "util"
+  ]
+  revision = "67f41e70b5f9981d96eea59b8e8134d20f60427f"
+  version = "v0.1.0"
+
+[[projects]]
   name = "github.com/hexoul/go-coinmarketcap"
   packages = [
     ".",
@@ -163,6 +173,16 @@
   ]
   revision = "74079904dea1cf536c70c40533ee0195af0ab700"
   version = "v1.3.1"
+
+[[projects]]
+  name = "github.com/hexoul/go-coinsuper"
+  packages = [
+    ".",
+    "types",
+    "util"
+  ]
+  revision = "a93a95cf9645d7063cce88f1de85eee066bbbb46"
+  version = "v0.1.0"
 
 [[projects]]
   branch = "master"
@@ -433,6 +453,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "a538d4fea5ade4a236db371b36a81c8ad47578dcc4d4d2b32f3143f0b51d1844"
+  inputs-digest = "86b140ab46644b7f5d2ecf226b3800491f1fb904ecd5ff1a4a38871219bc57cb"
   solver-name = "gps-cdcl"
   solver-version = 1
