@@ -25,15 +25,27 @@ var (
 		"abcc":      "YOUR_SECRET_KEY",
 	}
 
-	kucoinClient    *kucoin.Kucoin
-	abccClient      *abcc.Client
-	coinsuperClient *coinsuper.Client
+	testClients Clients
 )
 
 func init() {
-	kucoinClient = kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
-	abccClient = abcc.GetInstanceWithKey(testAccessKey["abcc"], testSecretKey["abcc"])
-	coinsuperClient = coinsuper.GetInstanceWithKey(testAccessKey["coinsuper"], testSecretKey["coinsuper"])
+	testClients.kucoin = kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
+	testClients.abcc = abcc.GetInstanceWithKey(testAccessKey["abcc"], testSecretKey["abcc"])
+	testClients.coinsuper = coinsuper.GetInstanceWithKey(testAccessKey["coinsuper"], testSecretKey["coinsuper"])
+}
+
+func TestKucoinBalance(t *testing.T) {
+	if bal, err := testClients.kucoin.GetCoinBalance("USDT"); err != nil {
+		t.FailNow()
+	} else {
+		t.Logf("%f %f\n", bal.Balance, bal.FreezeBalance)
+	}
+}
+
+func TestKucoinListMergedDealtOrders(t *testing.T) {
+	if _, err := testClients.kucoin.ListMergedDealtOrders("ETH-BTC", "BUY", 20, 1, 0, 0); err != nil {
+		t.FailNow()
+	}
 }
 
 func TestGit(t *testing.T) {
@@ -63,19 +75,5 @@ func TestGit(t *testing.T) {
 		},
 	}); err != nil {
 		t.Fatal(err)
-	}
-}
-
-func TestKucoinBalance(t *testing.T) {
-	if bal, err := kucoinClient.GetCoinBalance("BTC"); err != nil {
-		t.FailNow()
-	} else {
-		t.Logf("%f %f\n", bal.Balance, bal.FreezeBalance)
-	}
-}
-
-func TestKucoinListMergedDealtOrders(t *testing.T) {
-	if _, err := kucoinClient.ListMergedDealtOrders("ETH-BTC", "BUY", 20, 1, 0, 0); err != nil {
-		t.FailNow()
 	}
 }

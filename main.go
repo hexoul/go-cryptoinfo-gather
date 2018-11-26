@@ -4,16 +4,23 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"time"
+
+	kucoin "github.com/eeonevision/kucoin-go"
+	abcc "github.com/hexoul/go-abcc"
+	coinsuper "github.com/hexoul/go-coinsuper"
 
 	"github.com/jasonlvhit/gocron"
-	git "gopkg.in/src-d/go-git.v4"
-	"gopkg.in/src-d/go-git.v4/plumbing/object"
-	"gopkg.in/src-d/go-git.v4/plumbing/transport/http"
 
 	"github.com/hexoul/go-coinmarketcap/statistics"
 	"github.com/hexoul/go-coinmarketcap/types"
 )
+
+// Clients struct
+type Clients struct {
+	abcc      *abcc.Client
+	kucoin    *kucoin.Kucoin
+	coinsuper *coinsuper.Client
+}
 
 var (
 	gitID        string
@@ -24,6 +31,7 @@ var (
 	targetSlugs  = "binance"
 	accessKey    = map[string]string{}
 	secretKey    = map[string]string{}
+	clients      Clients
 )
 
 func init() {
@@ -49,45 +57,10 @@ func init() {
 			gitPW = arg[1]
 		}
 	}
-}
 
-// GitPushChanges commits log changes and pushs it
-func GitPushChanges() error {
-	if gitID == "" || gitPW == "" {
-		return nil
+	if accessKey["kucoin"] != "" {
+		clients.kucoin = kucoin.New(accessKey["kucoin"], secretKey["kucoin"])
 	}
-
-	// Open
-	r, err := git.PlainOpen("./")
-	if err != nil {
-		return err
-	}
-	w, err := r.Worktree()
-	if err != nil {
-		return err
-	}
-
-	// Commit
-	if _, err = w.Commit("Commit report.log changed", &git.CommitOptions{
-		Author: &object.Signature{
-			Name:  "hexoul",
-			Email: "crosien@gmail.com",
-			When:  time.Now(),
-		},
-		All: true,
-	}); err != nil {
-		return err
-	}
-
-	// Push
-	r.Push(&git.PushOptions{
-		RemoteName: "origin",
-		Auth: &http.BasicAuth{
-			Username: gitID,
-			Password: gitPW,
-		},
-	})
-	return nil
 }
 
 func main() {
@@ -145,7 +118,7 @@ func main() {
 	}
 
 	// Schedule Git commit and push
-	gocron.Every(1).Hour().Do(GitPushChanges)
+	gocron.Every(1).Hour().Do(gitPushChanges)
 
 	fmt.Printf("Done\nStart!!\n")
 	<-gocron.Start()
