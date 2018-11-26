@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strconv"
 	"time"
 
 	kucoin "github.com/eeonevision/kucoin-go"
+	abcc "github.com/hexoul/go-abcc"
 	coinsuper "github.com/hexoul/go-coinsuper"
 
 	log "github.com/sirupsen/logrus"
@@ -55,17 +57,41 @@ func getKucoinBalnace(k *kucoin.Kucoin) (meta, eth, btc float64) {
 	if bal, err := k.GetCoinBalance("BTC"); err == nil {
 		btc = bal.Balance + bal.FreezeBalance
 	}
-
 	logBalance("kucoin", meta, eth, btc)
 	return
 }
 
 func getCoinsuperBalnace() (meta, eth, btc string) {
-	if bal, err := coinsuper.GetInstance().UserAssetInfo(nil); err == nil {
-		meta = bal.Assets["META"].Total
-		eth = bal.Assets["ETH"].Total
-		btc = bal.Assets["BTC"].Total
+	if info, err := coinsuper.GetInstance().UserAssetInfo(nil); err == nil {
+		meta = info.Assets["META"].Total
+		eth = info.Assets["ETH"].Total
+		btc = info.Assets["BTC"].Total
 		logBalance("coinsuper", meta, eth, btc)
+	}
+	return
+}
+
+func sumStrFloat(s1, s2 string) (sum float64) {
+	f1, err1 := strconv.ParseFloat(s1, 64)
+	f2, err2 := strconv.ParseFloat(s2, 64)
+	if err1 == nil && err2 == nil {
+		sum = f1 + f2
+	}
+	return
+}
+
+func getAbccBalnace() (meta, eth, btc float64) {
+	if me, err := abcc.GetInstance().Me(nil); err == nil {
+		for _, v := range me.Accounts {
+			if v.Currency == "meta" {
+				meta = sumStrFloat(v.Balance, v.Locked)
+			} else if v.Currency == "eth" {
+				eth = sumStrFloat(v.Balance, v.Locked)
+			} else if v.Currency == "btc" {
+				btc = sumStrFloat(v.Balance, v.Locked)
+			}
+		}
+		logBalance("abcc", meta, eth, btc)
 	}
 	return
 }
@@ -74,4 +100,5 @@ func getCoinsuperBalnace() (meta, eth, btc string) {
 func GetBalances(c *Clients) {
 	getKucoinBalnace(c.kucoin)
 	getCoinsuperBalnace()
+	getAbccBalnace()
 }
