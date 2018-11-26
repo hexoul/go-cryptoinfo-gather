@@ -16,6 +16,8 @@ All options are not mandatory unless you use related APIs.
 
 ```bash
 go run main.go \
+-gitName=[GIT_NAME] \
+-gitEmail=[GIT_EMAIL] \
 -gitID=[GIT_ID] \
 -gitPW=[GIT_PW] \
 -logpath=[LOG_PATH] \
@@ -27,9 +29,11 @@ go run main.go \
 -coinsuper:accesskey=[COINSUPER_ACCESS_KEY] \
 -coinsuper:secretkey=[COINSUPER_SECRET_KEY] \
 -kucoin:accesskey=[KUCOIN_ACCESS_KEY] \
--kucoin:secretkey=[KUCOIN_SECRET_KEY]
-```
+-kucoin:secretkey=[KUCOIN_SECRET_KEY] \
+-abcc:accesskey=[KUCOIN_ACCESS_KEY] \
+-abcc:secretkey=[KUCOIN_SECRET_KEY]
 ...
+```
 
 ## License
 MIT

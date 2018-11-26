@@ -23,8 +23,6 @@ type Clients struct {
 }
 
 var (
-	gitID        string
-	gitPW        string
 	targetSymbol string
 	targetAddr   string
 	targetQuotes = "USD"
@@ -51,10 +49,6 @@ func init() {
 			accessKey[strings.Split(arg[0], ":")[0][1:]] = arg[1]
 		} else if strings.Contains(arg[0], "secretkey") {
 			secretKey[strings.Split(arg[0], ":")[0][1:]] = arg[1]
-		} else if arg[0] == "-gitID" {
-			gitID = arg[1]
-		} else if arg[0] == "-gitPW" {
-			gitPW = arg[1]
 		}
 	}
 
