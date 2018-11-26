@@ -141,7 +141,7 @@ func main() {
 
 	// Schedule OHLCV
 	for _, option := range ohlcvOptions {
-		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("09:05"))
+		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("09:20"))
 	}
 
 	// Schedule Git commit and push
