@@ -7,6 +7,7 @@ import (
 	"time"
 
 	kucoin "github.com/eeonevision/kucoin-go"
+	coinsuper "github.com/hexoul/go-coinsuper"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -32,6 +33,15 @@ func init() {
 	balanceLogger.SetLevel(log.InfoLevel)
 }
 
+func logBalance(exchange string, meta, eth, btc interface{}) {
+	balanceLogger.WithFields(log.Fields{
+		"exchange": exchange,
+		"meta":     meta,
+		"eth":      eth,
+		"btc":      btc,
+	}).Info("GatherBalance")
+}
+
 func getKucoinBalnace(k *kucoin.Kucoin) (meta, eth, btc float64) {
 	if k == nil {
 		return
@@ -46,16 +56,22 @@ func getKucoinBalnace(k *kucoin.Kucoin) (meta, eth, btc float64) {
 		btc = bal.Balance + bal.FreezeBalance
 	}
 
-	balanceLogger.WithFields(log.Fields{
-		"exchange": "kucoin",
-		"meta":     meta,
-		"eth":      eth,
-		"btc":      btc,
-	}).Info("GatherBalance")
+	logBalance("kucoin", meta, eth, btc)
+	return
+}
+
+func getCoinsuperBalnace() (meta, eth, btc string) {
+	if bal, err := coinsuper.GetInstance().UserAssetInfo(nil); err == nil {
+		meta = bal.Assets["META"].Total
+		eth = bal.Assets["ETH"].Total
+		btc = bal.Assets["BTC"].Total
+		logBalance("coinsuper", meta, eth, btc)
+	}
 	return
 }
 
 // GetBalances records balances
 func GetBalances(c *Clients) {
 	getKucoinBalnace(c.kucoin)
+	getCoinsuperBalnace()
 }

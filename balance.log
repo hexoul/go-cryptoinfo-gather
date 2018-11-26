@@ -1,1 +1,3 @@
 {"btc":0.06,"eth":2411.58845991,"exchange":"kucoin","level":"info","meta":14608142.8064938,"msg":"GatherBalance","time":"2018-11-26T15:56:51+09:00"}
+{"btc":0.06,"eth":2411.91832893,"exchange":"kucoin","level":"info","meta":14600296.299665648,"msg":"GatherBalance","time":"2018-11-26T16:04:21+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"1273.817004851244898000000000000000","exchange":"coinsuper","level":"info","meta":"15419150.657230720000000000000000000000","msg":"GatherBalance","time":"2018-11-26T16:04:21+09:00"}
