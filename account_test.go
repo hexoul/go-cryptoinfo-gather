@@ -25,3 +25,18 @@ func TestGetBalances(t *testing.T) {
 func TestGetTrades(t *testing.T) {
 	testClients.GetTrades()
 }
+
+func TestCheckExistOrder(t *testing.T) {
+	oID := "123"
+	if checkExistOrder(oID) {
+		t.FailNow()
+	}
+	if !checkExistOrder(oID) {
+		t.FailNow()
+	}
+}
+
+func TestDuplicatedGetTrades(t *testing.T) {
+	testClients.GetTrades()
+	testClients.GetTrades()
+}

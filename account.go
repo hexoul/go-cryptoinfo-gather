@@ -13,10 +13,30 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+const (
+	existLen = 200
+)
+
 var (
 	balanceLogger *log.Logger
 	tradeLogger   *log.Logger
+	existOrderID  [existLen]string
+	existIdx      = 0
 )
+
+func checkExistOrder(orderID string) bool {
+	for i := 0; i < existLen; i++ {
+		if existOrderID[i] == orderID {
+			return true
+		}
+	}
+	existOrderID[existIdx] = orderID
+	existIdx++
+	if existIdx >= existLen {
+		existIdx = 0
+	}
+	return false
+}
 
 func init() {
 	// Initialize logger
@@ -130,17 +150,21 @@ func logTrade(exchange, orderID, side, createdAt string, price, amount, fee, vol
 func getKucoinTrades(k *kucoin.Kucoin) {
 	if ret, err := k.ListMergedDealtOrders("META-ETH", "BUY", 20, 1, 0, 0); err == nil {
 		for _, v := range ret.Datas {
-			logTrade("kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+			if !checkExistOrder(v.OrderOid) {
+				logTrade("kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+			}
 		}
 	}
 	if ret, err := k.ListMergedDealtOrders("META-ETH", "SELL", 20, 1, 0, 0); err == nil {
 		for _, v := range ret.Datas {
-			logTrade("kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+			if !checkExistOrder(v.OrderOid) {
+				logTrade("kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+			}
 		}
 	}
 }
 
-// GetTrades records balances
+// GetTrades records trades
 func (c *Clients) GetTrades() {
 	getKucoinTrades(c.kucoin)
 }
