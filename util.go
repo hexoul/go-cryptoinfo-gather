@@ -44,6 +44,10 @@ func sumStrFloat(s1, s2 string) (sum float64) {
 	return
 }
 
+func toDateStr(timestamp int64) string {
+	return time.Unix(timestamp, 0).Format(time.RFC3339)
+}
+
 // gitPushChanges commits log changes and pushs it
 func gitPushChanges() error {
 	if gitID == "" || gitPW == "" {

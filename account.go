@@ -114,7 +114,33 @@ func (c *Clients) GetBalances() {
 	getAbccBalnace()
 }
 
-// GetTrades records balances
-func GetTrades() {
+func logTrade(exchange, orderID, side, createdAt string, price, amount, fee, volume float64) {
+	tradeLogger.WithFields(log.Fields{
+		"exchange":  exchange,
+		"orderID":   orderID,
+		"side":      side,
+		"price":     price,
+		"amount":    amount,
+		"fee":       fee,
+		"volume":    volume,
+		"createdAt": createdAt,
+	}).Info("GatherTrades")
+}
 
+func getKucoinTrades(k *kucoin.Kucoin) {
+	if ret, err := k.ListMergedDealtOrders("META-ETH", "BUY", 20, 1, 0, 0); err == nil {
+		for _, v := range ret.Datas {
+			logTrade("kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+		}
+	}
+	if ret, err := k.ListMergedDealtOrders("META-ETH", "SELL", 20, 1, 0, 0); err == nil {
+		for _, v := range ret.Datas {
+			logTrade("kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+		}
+	}
+}
+
+// GetTrades records balances
+func (c *Clients) GetTrades() {
+	getKucoinTrades(c.kucoin)
 }

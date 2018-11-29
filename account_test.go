@@ -23,5 +23,5 @@ func TestGetBalances(t *testing.T) {
 }
 
 func TestGetTrades(t *testing.T) {
-
+	testClients.GetTrades()
 }
