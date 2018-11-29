@@ -15,23 +15,38 @@ import (
 
 var (
 	balanceLogger *log.Logger
+	tradeLogger   *log.Logger
 )
 
 func init() {
 	// Initialize logger
 	balanceLogger = log.New()
+	tradeLogger = log.New()
 
-	// Default configuration
-	balanceLogger.Formatter = &log.JSONFormatter{
+	// Set formatter
+	jsonFormatter := &log.JSONFormatter{
 		TimestampFormat: time.RFC3339,
 	}
+	balanceLogger.Formatter = jsonFormatter
+	tradeLogger.Formatter = jsonFormatter
+
+	// Set writer
 	if f, err := os.OpenFile("./balance.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666); err == nil {
 		balanceLogger.Out = io.MultiWriter(f, os.Stdout)
 	} else {
 		fmt.Print("Failed to open log file: you can miss important log")
 		balanceLogger.Out = os.Stdout
 	}
+	if f, err := os.OpenFile("./trade.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666); err == nil {
+		tradeLogger.Out = io.MultiWriter(f, os.Stdout)
+	} else {
+		fmt.Print("Failed to open log file: you can miss important log")
+		tradeLogger.Out = os.Stdout
+	}
+
+	// Set level
 	balanceLogger.SetLevel(log.InfoLevel)
+	tradeLogger.SetLevel(log.InfoLevel)
 }
 
 func logBalance(exchange string, meta, eth, btc interface{}) {
@@ -93,8 +108,13 @@ func getAbccBalnace() (meta, eth, btc float64) {
 }
 
 // GetBalances records balances
-func GetBalances(c *Clients) {
+func (c *Clients) GetBalances() {
 	getKucoinBalnace(c.kucoin)
 	getCoinsuperBalnace()
 	getAbccBalnace()
+}
+
+// GetTrades records balances
+func GetTrades() {
+
 }

@@ -91,7 +91,7 @@ func main() {
 	}
 
 	// Initialize Balance
-	GetBalances(&clients)
+	clients.GetBalances()
 
 	fmt.Printf("Done\nScheduling...\n")
 
@@ -115,7 +115,7 @@ func main() {
 	}
 
 	// Schedule Balance
-	gocron.Every(10).Minutes().Do(GetBalances, &clients)
+	gocron.Every(10).Minutes().Do(clients.GetBalances)
 
 	// Schedule Git commit and push
 	gocron.Every(1).Hour().Do(gitPushChanges)

@@ -19,5 +19,9 @@ func TestKucoinListMergedDealtOrders(t *testing.T) {
 }
 
 func TestGetBalances(t *testing.T) {
-	GetBalances(&testClients)
+	testClients.GetBalances()
+}
+
+func TestGetTrades(t *testing.T) {
+
 }
