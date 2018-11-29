@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strconv"
 	"testing"
 )
 
@@ -34,9 +35,18 @@ func TestCheckExistOrder(t *testing.T) {
 	if !checkExistOrder(oID) {
 		t.FailNow()
 	}
+
+	intOrderID := int64(123)
+	s := strconv.FormatInt(intOrderID, 10)
+	if checkExistOrder(s) {
+		t.FailNow()
+	}
+	if !checkExistOrder(s) {
+		t.FailNow()
+	}
 }
 
-func TestDuplicatedGetTrades(t *testing.T) {
+func TestDuplicatedTrades(t *testing.T) {
 	testClients.GetTrades()
 	testClients.GetTrades()
 }

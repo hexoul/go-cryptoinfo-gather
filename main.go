@@ -93,6 +93,9 @@ func main() {
 	// Initialize Balance
 	clients.GetBalances()
 
+	// Initialize Trade
+	clients.GetTrades()
+
 	fmt.Printf("Done\nScheduling...\n")
 
 	// Schedule CryptoQuote
@@ -116,6 +119,9 @@ func main() {
 
 	// Schedule Balance
 	gocron.Every(10).Minutes().Do(clients.GetBalances)
+
+	// Schedule Trade
+	gocron.Every(2).Minutes().Do(clients.GetTrades)
 
 	// Schedule Git commit and push
 	gocron.Every(1).Hour().Do(gitPushChanges)

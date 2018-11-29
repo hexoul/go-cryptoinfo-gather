@@ -22,6 +22,7 @@ var (
 )
 
 func init() {
+	targetSymbol = "META"
 	testClients.kucoin = kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
 	testClients.abcc = abcc.GetInstanceWithKey(testAccessKey["abcc"], testSecretKey["abcc"])
 	testClients.coinsuper = coinsuper.GetInstanceWithKey(testAccessKey["coinsuper"], testSecretKey["coinsuper"])

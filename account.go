@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	kucoin "github.com/eeonevision/kucoin-go"
 	abcc "github.com/hexoul/go-abcc"
+	abccTypes "github.com/hexoul/go-abcc/types"
 	coinsuper "github.com/hexoul/go-coinsuper"
 
 	log "github.com/sirupsen/logrus"
@@ -147,15 +150,15 @@ func logTrade(exchange, orderID, side, createdAt string, price, amount, fee, vol
 	}).Info("GatherTrades")
 }
 
-func getKucoinTrades(k *kucoin.Kucoin) {
-	if ret, err := k.ListMergedDealtOrders("META-ETH", "BUY", 20, 1, 0, 0); err == nil {
+func getKucoinTrades(k *kucoin.Kucoin, pair string) {
+	if ret, err := k.ListMergedDealtOrders(pair, "BUY", 20, 1, 0, 0); err == nil {
 		for _, v := range ret.Datas {
 			if !checkExistOrder(v.OrderOid) {
 				logTrade("kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
 			}
 		}
 	}
-	if ret, err := k.ListMergedDealtOrders("META-ETH", "SELL", 20, 1, 0, 0); err == nil {
+	if ret, err := k.ListMergedDealtOrders(pair, "SELL", 20, 1, 0, 0); err == nil {
 		for _, v := range ret.Datas {
 			if !checkExistOrder(v.OrderOid) {
 				logTrade("kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
@@ -164,7 +167,30 @@ func getKucoinTrades(k *kucoin.Kucoin) {
 	}
 }
 
+func getAbccTrades(pair string) {
+	if abcc.GetInstance() == nil {
+		return
+	}
+	if ret, err := abcc.GetInstance().Trades(&abccTypes.Options{
+		MarketCode: pair,
+	}); err == nil {
+		for _, v := range ret.Trades {
+			oID := strconv.FormatInt(v.ID, 10)
+			if !checkExistOrder(oID) {
+				price, err1 := strconv.ParseFloat(v.Price, 32)
+				funds, err2 := strconv.ParseFloat(v.Funds, 32)
+				fee, err3 := strconv.ParseFloat(v.Fee, 32)
+				volume, err4 := strconv.ParseFloat(v.Volume, 32)
+				if err1 == nil && err2 == nil && err3 == nil && err4 == nil {
+					logTrade("abcc", oID, v.Side, v.CreatedAt, price, volume, fee, funds*2)
+				}
+			}
+		}
+	}
+}
+
 // GetTrades records trades
 func (c *Clients) GetTrades() {
-	getKucoinTrades(c.kucoin)
+	getKucoinTrades(c.kucoin, strings.ToUpper(targetSymbol)+"-ETH")
+	getAbccTrades(strings.ToLower(targetSymbol) + "eth")
 }
