@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	existLen = 200
+	existLen = 1000
 )
 
 var (
@@ -154,14 +154,14 @@ func getKucoinTrades(k *kucoin.Kucoin, pair string) {
 	if ret, err := k.ListMergedDealtOrders(pair, "BUY", 20, 1, 0, 0); err == nil {
 		for _, v := range ret.Datas {
 			if !checkExistOrder(v.OrderOid) {
-				logTrade("kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+				logTrade("kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue)
 			}
 		}
 	}
 	if ret, err := k.ListMergedDealtOrders(pair, "SELL", 20, 1, 0, 0); err == nil {
 		for _, v := range ret.Datas {
 			if !checkExistOrder(v.OrderOid) {
-				logTrade("kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue*2)
+				logTrade("kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue)
 			}
 		}
 	}
@@ -173,6 +173,7 @@ func getAbccTrades(pair string) {
 	}
 	if ret, err := abcc.GetInstance().Trades(&abccTypes.Options{
 		MarketCode: pair,
+		PerPage:    "100",
 	}); err == nil {
 		for _, v := range ret.Trades {
 			oID := strconv.FormatInt(v.ID, 10)
@@ -182,7 +183,7 @@ func getAbccTrades(pair string) {
 				fee, err3 := strconv.ParseFloat(v.Fee, 32)
 				volume, err4 := strconv.ParseFloat(v.Volume, 32)
 				if err1 == nil && err2 == nil && err3 == nil && err4 == nil {
-					logTrade("abcc", oID, v.Side, v.CreatedAt, price, volume, fee, funds*2)
+					logTrade("abcc", oID, v.Side, v.CreatedAt, price, volume, fee, funds)
 				}
 			}
 		}
