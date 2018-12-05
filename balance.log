@@ -3797,3 +3797,13 @@
 {"btc":0,"eth":107.44403684268866,"exchange":"abcc","level":"info","meta":1410781.98,"msg":"GatherBalance","time":"2018-12-05T14:16:38+09:00"}
 {"btc":0.06,"eth":2286.45812348,"exchange":"kucoin","level":"info","meta":17873794.64232795,"msg":"GatherBalance","time":"2018-12-05T14:26:39+09:00"}
 {"btc":0,"eth":107.44403684268866,"exchange":"abcc","level":"info","meta":1410781.98,"msg":"GatherBalance","time":"2018-12-05T14:26:39+09:00"}
+{"btc":0.06,"eth":2286.45392828,"exchange":"kucoin","level":"info","meta":17873710.779283352,"msg":"GatherBalance","time":"2018-12-05T14:36:40+09:00"}
+{"btc":0.06,"eth":2286.44916913,"exchange":"kucoin","level":"info","meta":17873615.64663585,"msg":"GatherBalance","time":"2018-12-05T14:46:41+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"1220.153845185256824000000000000000","exchange":"coinsuper","level":"info","meta":"14143246.463658920000000000000000000000","msg":"GatherBalance","time":"2018-12-05T14:46:41+09:00"}
+{"btc":0.06,"eth":2286.43186623,"exchange":"kucoin","level":"info","meta":17873268.53501395,"msg":"GatherBalance","time":"2018-12-05T14:56:43+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"1220.146717302517592200000000000000","exchange":"coinsuper","level":"info","meta":"14143101.685609420000000000000000000000","msg":"GatherBalance","time":"2018-12-05T14:56:43+09:00"}
+{"btc":0.06,"eth":2286.3791197,"exchange":"kucoin","level":"info","meta":17872212.20405305,"msg":"GatherBalance","time":"2018-12-05T15:06:44+09:00"}
+{"btc":0.06,"eth":2286.35929654,"exchange":"kucoin","level":"info","meta":17871814.282967802,"msg":"GatherBalance","time":"2018-12-05T15:16:44+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"1220.131913807794424200000000000000","exchange":"coinsuper","level":"info","meta":"14142816.739275820000000000000000000000","msg":"GatherBalance","time":"2018-12-05T15:16:45+09:00"}
+{"btc":0.06,"eth":2286.34932021,"exchange":"kucoin","level":"info","meta":17871614.54702105,"msg":"GatherBalance","time":"2018-12-05T15:26:47+09:00"}
+{"btc":0,"eth":107.44403684268866,"exchange":"abcc","level":"info","meta":1410781.98,"msg":"GatherBalance","time":"2018-12-05T15:26:47+09:00"}
