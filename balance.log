@@ -7878,3 +7878,12 @@
 {"btc":0.06,"eth":2075.72190387,"exchange":"kucoin","level":"info","meta":21995976.5000965,"msg":"GatherBalance","time":"2018-12-15T21:12:57+09:00"}
 {"btc":0,"eth":1146.2082497056886,"exchange":"abcc","level":"info","meta":13577576.3,"msg":"GatherBalance","time":"2018-12-15T21:12:57+09:00"}
 {"btc":0.06,"eth":2075.71284663,"exchange":"kucoin","level":"info","meta":21995754.563811902,"msg":"GatherBalance","time":"2018-12-15T21:22:58+09:00"}
+{"btc":0.06,"eth":2075.70650361,"exchange":"kucoin","level":"info","meta":21995601.7200948,"msg":"GatherBalance","time":"2018-12-15T21:32:59+09:00"}
+{"btc":0.06,"eth":2075.69720755,"exchange":"kucoin","level":"info","meta":21995377.7183915,"msg":"GatherBalance","time":"2018-12-15T21:43:00+09:00"}
+{"btc":0.06,"eth":2075.68757669,"exchange":"kucoin","level":"info","meta":21995145.6500852,"msg":"GatherBalance","time":"2018-12-15T21:53:01+09:00"}
+{"btc":0.06,"eth":2075.68309231,"exchange":"kucoin","level":"info","meta":21995037.5922153,"msg":"GatherBalance","time":"2018-12-15T22:03:02+09:00"}
+{"btc":0,"eth":1146.2082497056886,"exchange":"abcc","level":"info","meta":13577576.3,"msg":"GatherBalance","time":"2018-12-15T22:03:02+09:00"}
+{"btc":0.06,"eth":2075.6780221999998,"exchange":"kucoin","level":"info","meta":21994915.4210715,"msg":"GatherBalance","time":"2018-12-15T22:13:03+09:00"}
+{"btc":0,"eth":1146.2082497056888,"exchange":"abcc","level":"info","meta":13577576.3,"msg":"GatherBalance","time":"2018-12-15T22:13:03+09:00"}
+{"btc":0.06,"eth":2075.67024889,"exchange":"kucoin","level":"info","meta":21994727.7135554,"msg":"GatherBalance","time":"2018-12-15T22:23:04+09:00"}
+{"btc":0,"eth":1146.2082497056888,"exchange":"abcc","level":"info","meta":13577576.3,"msg":"GatherBalance","time":"2018-12-15T22:23:04+09:00"}
