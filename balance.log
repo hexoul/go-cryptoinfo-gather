@@ -8134,3 +8134,13 @@
 {"btc":0.06,"eth":2086.99300757,"exchange":"kucoin","level":"info","meta":21693984.6873357,"msg":"GatherBalance","time":"2018-12-17T04:16:28+09:00"}
 {"btc":0.06,"eth":2086.98565916,"exchange":"kucoin","level":"info","meta":21693830.309026603,"msg":"GatherBalance","time":"2018-12-17T04:26:29+09:00"}
 {"btc":"0.000000000000000000000000000000","eth":"227.110798787413667000000000000000","exchange":"coinsuper","level":"info","meta":"607497.403258500000000000000000000000","msg":"GatherBalance","time":"2018-12-17T04:26:30+09:00"}
+{"btc":0.06,"eth":2086.9820823,"exchange":"kucoin","level":"info","meta":21693755.164961502,"msg":"GatherBalance","time":"2018-12-17T04:36:31+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"230.274927526479395000000000000000","exchange":"coinsuper","level":"info","meta":"536611.141179580000000000000000000000","msg":"GatherBalance","time":"2018-12-17T04:36:31+09:00"}
+{"btc":0.06,"eth":2086.9781101,"exchange":"kucoin","level":"info","meta":21693671.7155096,"msg":"GatherBalance","time":"2018-12-17T04:46:32+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"229.714566882042852600000000000000","exchange":"coinsuper","level":"info","meta":"547825.465706540000000000000000000000","msg":"GatherBalance","time":"2018-12-17T04:46:32+09:00"}
+{"btc":0.06,"eth":2087.12754309,"exchange":"kucoin","level":"info","meta":21690489.410467602,"msg":"GatherBalance","time":"2018-12-17T04:56:33+09:00"}
+{"btc":0,"eth":1138.5149885973888,"exchange":"abcc","level":"info","meta":13732799.549999999,"msg":"GatherBalance","time":"2018-12-17T04:56:33+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T05:06:34+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T05:16:35+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T05:26:36+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"223.098736831251325000000000000000","exchange":"coinsuper","level":"info","meta":"682654.306121720000000000000000000000","msg":"GatherBalance","time":"2018-12-17T05:26:37+09:00"}
