@@ -8125,3 +8125,12 @@
 {"btc":0.06,"eth":2087.02949927,"exchange":"kucoin","level":"info","meta":21694736.2275884,"msg":"GatherBalance","time":"2018-12-17T03:16:19+09:00"}
 {"btc":0.06,"eth":2087.02329593,"exchange":"kucoin","level":"info","meta":21694608.5460301,"msg":"GatherBalance","time":"2018-12-17T03:26:20+09:00"}
 {"btc":"0.000000000000000000000000000000","eth":"229.505919786096345600000000000000","exchange":"coinsuper","level":"info","meta":"566343.767968400000000000000000000000","msg":"GatherBalance","time":"2018-12-17T03:26:20+09:00"}
+{"btc":0.06,"eth":2087.01775138,"exchange":"kucoin","level":"info","meta":21694494.5209489,"msg":"GatherBalance","time":"2018-12-17T03:36:22+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"230.866576484094856000000000000000","exchange":"coinsuper","level":"info","meta":"535764.818887040000000000000000000000","msg":"GatherBalance","time":"2018-12-17T03:36:22+09:00"}
+{"btc":0.06,"eth":2087.0106321000003,"exchange":"kucoin","level":"info","meta":21694348.1237454,"msg":"GatherBalance","time":"2018-12-17T03:46:23+09:00"}
+{"btc":0,"eth":1138.5149885973885,"exchange":"abcc","level":"info","meta":13732799.549999999,"msg":"GatherBalance","time":"2018-12-17T03:46:23+09:00"}
+{"btc":0.06,"eth":2087.00495674,"exchange":"kucoin","level":"info","meta":21688775.8355086,"msg":"GatherBalance","time":"2018-12-17T03:56:24+09:00"}
+{"btc":0.06,"eth":2086.99848844,"exchange":"kucoin","level":"info","meta":21694098.2129574,"msg":"GatherBalance","time":"2018-12-17T04:06:25+09:00"}
+{"btc":0.06,"eth":2086.99300757,"exchange":"kucoin","level":"info","meta":21693984.6873357,"msg":"GatherBalance","time":"2018-12-17T04:16:28+09:00"}
+{"btc":0.06,"eth":2086.98565916,"exchange":"kucoin","level":"info","meta":21693830.309026603,"msg":"GatherBalance","time":"2018-12-17T04:26:29+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"227.110798787413667000000000000000","exchange":"coinsuper","level":"info","meta":"607497.403258500000000000000000000000","msg":"GatherBalance","time":"2018-12-17T04:26:30+09:00"}
