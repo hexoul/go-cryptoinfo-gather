@@ -8097,3 +8097,12 @@
 {"btc":0.06,"eth":2087.2004338300003,"exchange":"kucoin","level":"info","meta":21698190.2724815,"msg":"GatherBalance","time":"2018-12-17T00:15:58+09:00"}
 {"btc":0.06,"eth":2087.18458837,"exchange":"kucoin","level":"info","meta":21697874.945500903,"msg":"GatherBalance","time":"2018-12-17T00:25:59+09:00"}
 {"btc":"0.000000000000000000000000000000","eth":"219.356055414399039600000000000000","exchange":"coinsuper","level":"info","meta":"817626.077027180000000000000000000000","msg":"GatherBalance","time":"2018-12-17T00:25:59+09:00"}
+{"btc":0.06,"eth":2087.17333485,"exchange":"kucoin","level":"info","meta":21697651.2303842,"msg":"GatherBalance","time":"2018-12-17T00:36:01+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"219.351987251507993200000000000000","exchange":"coinsuper","level":"info","meta":"817549.999280360000000000000000000000","msg":"GatherBalance","time":"2018-12-17T00:36:01+09:00"}
+{"btc":0.06,"eth":2087.1641766499997,"exchange":"kucoin","level":"info","meta":21697466.5070041,"msg":"GatherBalance","time":"2018-12-17T00:46:02+09:00"}
+{"btc":0,"eth":1138.5149885973885,"exchange":"abcc","level":"info","meta":13732799.55,"msg":"GatherBalance","time":"2018-12-17T00:46:02+09:00"}
+{"btc":0.06,"eth":2087.1589725599997,"exchange":"kucoin","level":"info","meta":21697361.3432255,"msg":"GatherBalance","time":"2018-12-17T00:56:03+09:00"}
+{"btc":0.06,"eth":2087.14924575,"exchange":"kucoin","level":"info","meta":21697164.865358103,"msg":"GatherBalance","time":"2018-12-17T01:06:04+09:00"}
+{"btc":0.06,"eth":2087.1338336500003,"exchange":"kucoin","level":"info","meta":21696853.1959095,"msg":"GatherBalance","time":"2018-12-17T01:16:05+09:00"}
+{"btc":0.06,"eth":2087.12545401,"exchange":"kucoin","level":"info","meta":21696683.6360192,"msg":"GatherBalance","time":"2018-12-17T01:26:06+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"221.169633066403900600000000000000","exchange":"coinsuper","level":"info","meta":"769832.727474800000000000000000000000","msg":"GatherBalance","time":"2018-12-17T01:26:06+09:00"}
