@@ -8154,3 +8154,12 @@
 {"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T06:16:44+09:00"}
 {"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T06:26:45+09:00"}
 {"btc":"0.000000000000000000000000000000","eth":"223.098736831251325000000000000000","exchange":"coinsuper","level":"info","meta":"682654.306121720000000000000000000000","msg":"GatherBalance","time":"2018-12-17T06:26:46+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T06:36:47+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"223.098736831251325000000000000000","exchange":"coinsuper","level":"info","meta":"682654.306121720000000000000000000000","msg":"GatherBalance","time":"2018-12-17T06:36:47+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T06:46:48+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"223.098736831251325000000000000000","exchange":"coinsuper","level":"info","meta":"682654.306121720000000000000000000000","msg":"GatherBalance","time":"2018-12-17T06:46:49+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T06:56:50+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"223.098736831251325000000000000000","exchange":"coinsuper","level":"info","meta":"682654.306121720000000000000000000000","msg":"GatherBalance","time":"2018-12-17T06:56:51+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T07:06:52+09:00"}
+{"btc":0.06,"eth":2087.0274342800003,"exchange":"kucoin","level":"info","meta":21692590.433541402,"msg":"GatherBalance","time":"2018-12-17T07:16:53+09:00"}
+{"btc":0.06,"eth":2086.97505251,"exchange":"kucoin","level":"info","meta":21693607.480766002,"msg":"GatherBalance","time":"2018-12-17T07:26:54+09:00"}
