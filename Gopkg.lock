@@ -171,8 +171,8 @@
     "types",
     "util"
   ]
-  revision = "74079904dea1cf536c70c40533ee0195af0ab700"
-  version = "v1.3.1"
+  revision = "51b03395f37e39c0dccd1e13152d6f1130efcede"
+  version = "v1.3.2"
 
 [[projects]]
   name = "github.com/hexoul/go-coinsuper"
@@ -453,6 +453,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "3caf389534419aa4268c2a0d5e573371a26c24e26180c604dd1c4c2dab142817"
+  inputs-digest = "39fc4c56f9ac30e5cb96bfe276025f304200ed2b27f35c07c1ffb255d23956ca"
   solver-name = "gps-cdcl"
   solver-version = 1

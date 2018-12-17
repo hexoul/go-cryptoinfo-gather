@@ -1,4 +1,5 @@
 # go-cryptoinfo-gather
+
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hexoul/go-cryptoinfo-gather/master/LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/hexoul/go-cryptoinfo-gather)](https://goreportcard.com/report/github.com/hexoul/go-cryptoinfo-gather)
 [![GoDoc](https://godoc.org/github.com/hexoul/go-cryptoinfo-gather?status.svg)](https://godoc.org/github.com/hexoul/go-cryptoinfo-gather)
@@ -6,12 +7,14 @@
 > Crypto info gather
 
 ## Build
+
 ```bash
 dep ensure
 go build
 ```
 
 ## Usage
+
 All options are not mandatory unless you use related APIs.
 
 ```bash
@@ -34,6 +37,3 @@ go run main.go \
 -abcc:secretkey=[ABCC_SECRET_KEY] \
 ...
 ```
-
-## License
-MIT
