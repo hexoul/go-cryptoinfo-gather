@@ -11319,3 +11319,13 @@
 {"btc":0.06,"eth":1934.74372535,"exchange":"kucoin","level":"info","meta":25295828.717572898,"msg":"GatherBalance","time":"2018-12-24T19:58:43+09:00"}
 {"btc":0,"eth":0,"exchange":"kucoin","level":"info","meta":0,"msg":"GatherBalance","time":"2018-12-24T20:08:43+09:00"}
 {"btc":0.06,"eth":1934.65524266,"exchange":"kucoin","level":"info","meta":25297667.137531497,"msg":"GatherBalance","time":"2018-12-24T20:18:45+09:00"}
+{"btc":0.06,"eth":1933.9757534300002,"exchange":"kucoin","level":"info","meta":25317298.8083269,"msg":"GatherBalance","time":"2018-12-24T20:28:46+09:00"}
+{"btc":0,"eth":1135.4258265460887,"exchange":"abcc","level":"info","meta":13814720.200000001,"msg":"GatherBalance","time":"2018-12-24T20:28:46+09:00"}
+{"btc":0.06,"eth":1933.9707496299998,"exchange":"kucoin","level":"info","meta":25317152.5293653,"msg":"GatherBalance","time":"2018-12-24T20:38:47+09:00"}
+{"btc":0,"eth":1135.4258265460887,"exchange":"abcc","level":"info","meta":13814720.200000001,"msg":"GatherBalance","time":"2018-12-24T20:38:47+09:00"}
+{"btc":0.06,"eth":1933.96601135,"exchange":"kucoin","level":"info","meta":25317014.380778998,"msg":"GatherBalance","time":"2018-12-24T20:48:48+09:00"}
+{"btc":0,"eth":1135.4258265460887,"exchange":"abcc","level":"info","meta":13814720.200000001,"msg":"GatherBalance","time":"2018-12-24T20:48:48+09:00"}
+{"btc":0.06,"eth":1933.95958969,"exchange":"kucoin","level":"info","meta":25316826.4717135,"msg":"GatherBalance","time":"2018-12-24T20:58:49+09:00"}
+{"btc":0.06,"eth":1929.44185738,"exchange":"kucoin","level":"info","meta":25451220.8179985,"msg":"GatherBalance","time":"2018-12-24T21:08:50+09:00"}
+{"btc":0.06,"eth":1929.4331906700002,"exchange":"kucoin","level":"info","meta":25450967.4616284,"msg":"GatherBalance","time":"2018-12-24T21:18:51+09:00"}
+{"btc":"0.000000000000000000000000000000","eth":"75.727961661593382400000000000000","exchange":"coinsuper","level":"info","meta":"4118824.454891940000000000000000000000","msg":"GatherBalance","time":"2018-12-24T21:18:52+09:00"}
