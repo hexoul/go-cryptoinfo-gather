@@ -114,7 +114,7 @@ func main() {
 
 	// Schedule OHLCV
 	for _, option := range ohlcvOptions {
-		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("09:20"))
+		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("10:00"))
 	}
 
 	// Schedule Balance
@@ -124,7 +124,7 @@ func main() {
 	gocron.Every(2).Minutes().Do(clients.GetTrades)
 
 	// Schedule Git commit and push
-	gocron.Every(1).Hour().Do(gitPushChanges)
+	gocron.Every(2).Hours().Do(gitPushChanges)
 
 	fmt.Printf("Done\nStart!!\n")
 	<-gocron.Start()
