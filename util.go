@@ -65,7 +65,7 @@ func gitPushChanges() error {
 	}
 
 	// Commit
-	if _, err = w.Commit("log files changed", &git.CommitOptions{
+	if _, err = w.Commit("log updated", &git.CommitOptions{
 		Author: &object.Signature{
 			Name:  gitName,
 			Email: gitEmail,
