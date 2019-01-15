@@ -69,13 +69,15 @@ func main() {
 
 	// Initialize ExchangeMarketPairs
 	var exchangeMarketPairsOptions []*types.Options
-	for i, slug := range strings.Split(targetSlugs, ",") {
-		exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
-			Slug:    slug,
-			Convert: targetQuotes,
-			Limit:   200,
-		})
-		statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[i], slug)
+	for _, slug := range strings.Split(targetSlugs, ",") {
+		for _, quote := range strings.Split(targetQuotes, ",") {
+			exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
+				Slug:    slug,
+				Convert: quote,
+				Limit:   400,
+			})
+			statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[len(exchangeMarketPairsOptions)-1], targetSymbol)
+		}
 	}
 
 	// Initialize TokenMetric
@@ -114,7 +116,7 @@ func main() {
 
 	// Schedule OHLCV
 	for _, option := range ohlcvOptions {
-		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("10:00"))
+		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("11:00"))
 	}
 
 	// Schedule Balance
