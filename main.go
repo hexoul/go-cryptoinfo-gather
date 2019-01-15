@@ -70,14 +70,12 @@ func main() {
 	// Initialize ExchangeMarketPairs
 	var exchangeMarketPairsOptions []*types.Options
 	for _, slug := range strings.Split(targetSlugs, ",") {
-		for _, quote := range strings.Split(targetQuotes, ",") {
-			exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
-				Slug:    slug,
-				Convert: quote,
-				Limit:   400,
-			})
-			statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[len(exchangeMarketPairsOptions)-1], targetSymbol)
-		}
+		exchangeMarketPairsOptions = append(exchangeMarketPairsOptions, &types.Options{
+			Slug:    slug,
+			Convert: targetQuotes,
+			Limit:   300,
+		})
+		statistics.TaskGatherExchangeMarketPairs(exchangeMarketPairsOptions[len(exchangeMarketPairsOptions)-1], targetSymbol)
 	}
 
 	// Initialize TokenMetric
