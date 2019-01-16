@@ -114,7 +114,7 @@ func main() {
 
 	// Schedule OHLCV
 	for _, option := range ohlcvOptions {
-		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("11:00"))
+		statistics.GatherOhlcv(option, gocron.Every(1).Day().At("12:00"))
 	}
 
 	// Schedule Balance
