@@ -5,9 +5,9 @@ import (
 	"os"
 	"strings"
 
-	kucoin "github.com/eeonevision/kucoin-go"
 	abcc "github.com/hexoul/go-abcc"
 	coinsuper "github.com/hexoul/go-coinsuper"
+	kucoin "github.com/hexoul/go-kucoin"
 
 	"github.com/jasonlvhit/gocron"
 

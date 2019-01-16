@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	kucoin "github.com/eeonevision/kucoin-go"
 	abcc "github.com/hexoul/go-abcc"
 	abccTypes "github.com/hexoul/go-abcc/types"
 	coinsuper "github.com/hexoul/go-coinsuper"
+	kucoin "github.com/hexoul/go-kucoin"
 
 	log "github.com/sirupsen/logrus"
 )

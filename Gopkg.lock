@@ -97,13 +97,6 @@
   version = "v1.5.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/eeonevision/kucoin-go"
-  packages = ["."]
-  revision = "178f1a17dd158056b59aafd9d8e5b735d8fc62ca"
-  source = "github.com/eeonevision/kucoin-go"
-
-[[projects]]
   name = "github.com/emirpasic/gods"
   packages = [
     "containers",
@@ -182,6 +175,12 @@
     "util"
   ]
   revision = "a93a95cf9645d7063cce88f1de85eee066bbbb46"
+  version = "v0.1.0"
+
+[[projects]]
+  name = "github.com/hexoul/go-kucoin"
+  packages = ["."]
+  revision = "bf644e0819ce40299b30048ff6409e6208677cb1"
   version = "v0.1.0"
 
 [[projects]]
@@ -453,6 +452,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "39fc4c56f9ac30e5cb96bfe276025f304200ed2b27f35c07c1ffb255d23956ca"
+  inputs-digest = "55fc60314ed20a5b2639c09e8dce1a684881c93655fbfe27c544835c67cf500b"
   solver-name = "gps-cdcl"
   solver-version = 1
