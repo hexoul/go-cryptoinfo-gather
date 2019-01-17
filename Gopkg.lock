@@ -153,8 +153,8 @@
     "types",
     "util"
   ]
-  revision = "5a634bedf01295215adc120dd447c04471f3498b"
-  version = "v0.2.1"
+  revision = "61ab7252e39d77075c7d54641b6aefda2764f960"
+  version = "v0.2.2"
 
 [[projects]]
   name = "github.com/hexoul/go-coinmarketcap"
@@ -452,6 +452,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "55fc60314ed20a5b2639c09e8dce1a684881c93655fbfe27c544835c67cf500b"
+  inputs-digest = "fc4011c8cc21ecde72b2a2627c1b3a506ed53443ba77416864175ba4df9d71d1"
   solver-name = "gps-cdcl"
   solver-version = 1

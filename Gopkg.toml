@@ -34,7 +34,7 @@
 
 [[constraint]]
    name = "github.com/hexoul/go-abcc"
-   version = "0.2.1"
+   version = "0.2.2"
 
 [[constraint]]
    name = "github.com/hexoul/go-kucoin"
