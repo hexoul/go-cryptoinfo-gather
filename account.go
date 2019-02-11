@@ -165,9 +165,9 @@ func getKucoinTrades(pair string) {
 	if kucoin.GetInstance() == nil {
 		return
 	}
-	if ret, err := kucoin.GetInstance().ListFills(&kucoin.Options{}); err == nil {
+	if ret, err := kucoin.GetInstance().ListFills(nil); err == nil {
 		for _, v := range ret {
-			if !checkExistOrder(v.TradeID) {
+			if v.Symbol == pair && !checkExistOrder(v.TradeID) {
 				price, pErr1 := strconv.ParseFloat(v.Price, 32)
 				size, pErr2 := strconv.ParseFloat(v.Size, 32)
 				fee, pErr3 := strconv.ParseFloat(v.Fee, 32)
