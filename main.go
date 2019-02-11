@@ -17,8 +17,9 @@ import (
 
 // Clients struct
 type Clients struct {
-	abcc      *abcc.Client
-	kucoin    *kucoin.Kucoin
+	abcc   *abcc.Client
+	kucoin *kucoin.Kucoin
+	// kucoin    *kucoin.Client
 	coinsuper *coinsuper.Client
 }
 
