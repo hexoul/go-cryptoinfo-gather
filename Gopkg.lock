@@ -180,8 +180,8 @@
 [[projects]]
   name = "github.com/hexoul/go-kucoin"
   packages = ["."]
-  revision = "bf644e0819ce40299b30048ff6409e6208677cb1"
-  version = "v0.1.0"
+  revision = "f087846327399d1f05018ea3fa4d3f4936493afe"
+  version = "v0.2.1"
 
 [[projects]]
   branch = "master"
@@ -452,6 +452,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fc4011c8cc21ecde72b2a2627c1b3a506ed53443ba77416864175ba4df9d71d1"
+  inputs-digest = "75dd331533123ce0a8641eeb7b0a5c359fd75b7939b85cbe3850cf0c6c923ad7"
   solver-name = "gps-cdcl"
   solver-version = 1

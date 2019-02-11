@@ -81,18 +81,28 @@ func logBalance(exchange string, meta, eth, btc interface{}) {
 	}).Info("GatherBalance")
 }
 
-func getKucoinBalnace(k *kucoin.Kucoin) (meta, eth, btc float64) {
-	if k == nil {
+func getKucoinBalnace() (meta, eth, btc float64) {
+	if kucoin.GetInstance() == nil {
 		return
 	}
-	if bal, err := k.GetCoinBalance("META"); err == nil {
-		meta = bal.Balance + bal.FreezeBalance
-	}
-	if bal, err := k.GetCoinBalance("ETH"); err == nil {
-		eth = bal.Balance + bal.FreezeBalance
-	}
-	if bal, err := k.GetCoinBalance("BTC"); err == nil {
-		btc = bal.Balance + bal.FreezeBalance
+	if accounts, err := kucoin.GetInstance().ListAccounts(nil); err == nil {
+		for _, v := range accounts {
+			bal, pErr := strconv.ParseFloat(v.Balance, 32)
+			if pErr != nil {
+				continue
+			}
+			switch v.Currency {
+			case "META":
+				meta += bal
+				break
+			case "ETH":
+				eth += bal
+				break
+			case "BTC":
+				btc += bal
+				break
+			}
+		}
 	}
 	logBalance("kucoin", meta, eth, btc)
 	return
@@ -132,7 +142,7 @@ func getAbccBalnace() (meta, eth, btc float64) {
 
 // GetBalances records balances
 func (c *Clients) GetBalances() {
-	getKucoinBalnace(c.kucoin)
+	getKucoinBalnace()
 	getCoinsuperBalnace()
 	getAbccBalnace()
 }
@@ -151,18 +161,20 @@ func logTrade(pair, exchange, orderID, side, createdAt string, price, amount, fe
 	}).Info("GatherTrades")
 }
 
-func getKucoinTrades(k *kucoin.Kucoin, pair string) {
-	if ret, err := k.ListMergedDealtOrders(pair, "BUY", 20, 1, 0, 0); err == nil {
-		for _, v := range ret.Datas {
-			if !checkExistOrder(v.OrderOid) {
-				logTrade(pair, "kucoin", v.OrderOid, "BUY", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue)
-			}
-		}
+func getKucoinTrades(pair string) {
+	if kucoin.GetInstance() == nil {
+		return
 	}
-	if ret, err := k.ListMergedDealtOrders(pair, "SELL", 20, 1, 0, 0); err == nil {
-		for _, v := range ret.Datas {
-			if !checkExistOrder(v.OrderOid) {
-				logTrade(pair, "kucoin", v.OrderOid, "SELL", toDateStr(v.CreatedAt/1000), v.DealPrice, v.Amount, v.Fee, v.DealValue)
+	if ret, err := kucoin.GetInstance().ListFills(&kucoin.Options{}); err == nil {
+		for _, v := range ret {
+			if !checkExistOrder(v.TradeID) {
+				price, pErr1 := strconv.ParseFloat(v.Price, 32)
+				size, pErr2 := strconv.ParseFloat(v.Size, 32)
+				fee, pErr3 := strconv.ParseFloat(v.Fee, 32)
+				funds, pErr4 := strconv.ParseFloat(v.Funds, 32)
+				if pErr1 == nil && pErr2 == nil && pErr3 == nil && pErr4 == nil {
+					logTrade(pair, "kucoin", v.TradeID, v.Side, toDateStr(v.CreatedAt/1000), price, size, fee, funds)
+				}
 			}
 		}
 	}
@@ -193,6 +205,6 @@ func getAbccTrades(pair string) {
 
 // GetTrades records trades
 func (c *Clients) GetTrades() {
-	getKucoinTrades(c.kucoin, strings.ToUpper(targetSymbol)+"-ETH")
+	getKucoinTrades(strings.ToUpper(targetSymbol) + "-ETH")
 	getAbccTrades(strings.ToLower(targetSymbol) + "eth")
 }

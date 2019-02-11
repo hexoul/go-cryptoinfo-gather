@@ -17,9 +17,8 @@ import (
 
 // Clients struct
 type Clients struct {
-	abcc   *abcc.Client
-	kucoin *kucoin.Kucoin
-	// kucoin    *kucoin.Client
+	abcc      *abcc.Client
+	kucoin    *kucoin.Client
 	coinsuper *coinsuper.Client
 }
 
@@ -51,10 +50,6 @@ func init() {
 		} else if strings.Contains(arg[0], "secretkey") {
 			secretKey[strings.Split(arg[0], ":")[0][1:]] = arg[1]
 		}
-	}
-
-	if accessKey["kucoin"] != "" {
-		clients.kucoin = kucoin.New(accessKey["kucoin"], secretKey["kucoin"])
 	}
 }
 

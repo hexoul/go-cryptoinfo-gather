@@ -17,13 +17,16 @@ var (
 		"coinsuper": "YOUR_SECRET_KEY",
 		"abcc":      "YOUR_SECRET_KEY",
 	}
+	testPassPhrase = map[string]string{
+		"kucoin": "YOUR_PASSPHRASE",
+	}
 
 	testClients Clients
 )
 
 func init() {
 	targetSymbol = "META"
-	testClients.kucoin = kucoin.New(testAccessKey["kucoin"], testSecretKey["kucoin"])
+	testClients.kucoin = kucoin.GetInstanceWithKey(testAccessKey["kucoin"], testSecretKey["kucoin"], testPassPhrase["kucoin"])
 	testClients.abcc = abcc.GetInstanceWithKey(testAccessKey["abcc"], testSecretKey["abcc"])
 	testClients.coinsuper = coinsuper.GetInstanceWithKey(testAccessKey["coinsuper"], testSecretKey["coinsuper"])
 }
