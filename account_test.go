@@ -5,13 +5,13 @@ import (
 	"testing"
 )
 
-func TestKucoinBalance(t *testing.T) {
+func TestKucoinAccounts(t *testing.T) {
 	if _, err := testClients.kucoin.ListAccounts(nil); err != nil {
 		t.FailNow()
 	}
 }
 
-func TestKucoinListMergedDealtOrders(t *testing.T) {
+func TestKucoinListFills(t *testing.T) {
 	if _, err := testClients.kucoin.ListFills(nil); err != nil {
 		t.FailNow()
 	}
