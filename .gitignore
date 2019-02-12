@@ -10,8 +10,11 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+balance_bk*.log
+report_bk*.log
 trade_bk*.log
 go-cryptoinfo-gather
+run
 
 *.sh
 vendor
