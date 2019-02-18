@@ -8,17 +8,17 @@ import (
 
 var (
 	testAccessKey = map[string]string{
-		"kucoin":    "YOUR_ACCESS_KEY",
+		"kucoin":    "5c6ac76a1cde7830729e25eb",
 		"coinsuper": "YOUR_ACCESS_KEY",
 		"abcc":      "YOUR_ACCESS_KEY",
 	}
 	testSecretKey = map[string]string{
-		"kucoin":    "YOUR_SECRET_KEY",
+		"kucoin":    "5c0910e-b3ad-41fe-af34-0164d9143322",
 		"coinsuper": "YOUR_SECRET_KEY",
 		"abcc":      "YOUR_SECRET_KEY",
 	}
 	testPassPhrase = map[string]string{
-		"kucoin": "YOUR_PASSPHRASE",
+		"kucoin": "MetadiumToTheMoon",
 	}
 
 	testClients Clients
