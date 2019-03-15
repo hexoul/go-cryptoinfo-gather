@@ -75,7 +75,7 @@ func main() {
 	}
 
 	// Initialize TokenMetric
-	statistics.TaskGatherTokenMetric(targetSymbol, targetAddr)
+	// statistics.TaskGatherTokenMetric(targetSymbol, targetAddr)
 
 	// Initialize OHLCV
 	var ohlcvOptions []*types.Options
@@ -105,8 +105,8 @@ func main() {
 	}
 
 	// Schedule TokenMetric
-	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(30).Minutes())
-	statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("23:59"))
+	// statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(30).Minutes())
+	// statistics.GatherTokenMetric(targetSymbol, targetAddr, gocron.Every(1).Day().At("23:59"))
 
 	// Schedule OHLCV
 	for _, option := range ohlcvOptions {
