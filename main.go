@@ -120,7 +120,7 @@ func main() {
 	gocron.Every(2).Minutes().Do(clients.GetTrades)
 
 	// Schedule Git commit and push
-	gocron.Every(2).Hours().Do(gitPushChanges)
+	gocron.Every(3).Hours().Do(gitPushChanges)
 
 	fmt.Printf("Done\nStart!!\n")
 	<-gocron.Start()
