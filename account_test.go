@@ -17,6 +17,11 @@ func TestKucoinListFills(t *testing.T) {
 	}
 }
 
+func TestBittrexBalance(t *testing.T) {
+	meta, eth, btc := getBittrexBalnace(testClients.bittrex)
+	t.Log(meta, eth, btc)
+}
+
 func TestGetBalances(t *testing.T) {
 	testClients.GetBalances()
 }

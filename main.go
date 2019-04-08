@@ -8,6 +8,7 @@ import (
 	abcc "github.com/hexoul/go-abcc"
 	coinsuper "github.com/hexoul/go-coinsuper"
 	kucoin "github.com/hexoul/go-kucoin"
+	bittrex "github.com/toorop/go-bittrex"
 
 	"github.com/jasonlvhit/gocron"
 
@@ -18,6 +19,7 @@ import (
 // Clients struct
 type Clients struct {
 	abcc      *abcc.Client
+	bittrex   *bittrex.Bittrex
 	kucoin    *kucoin.Client
 	coinsuper *coinsuper.Client
 }
@@ -51,6 +53,8 @@ func init() {
 			secretKey[strings.Split(arg[0], ":")[0][1:]] = arg[1]
 		}
 	}
+
+	clients.bittrex = bittrex.New(accessKey["bittrex"], secretKey["bittrex"])
 }
 
 func main() {
