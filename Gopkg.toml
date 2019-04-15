@@ -42,7 +42,7 @@
 
 [[constraint]]
    name = "github.com/hexoul/go-upbit"
-   version = "0.1.0"
+   version = "0.1.1"
 
 [prune]
   go-tests = true
