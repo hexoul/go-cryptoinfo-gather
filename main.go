@@ -8,6 +8,7 @@ import (
 	abcc "github.com/hexoul/go-abcc"
 	coinsuper "github.com/hexoul/go-coinsuper"
 	kucoin "github.com/hexoul/go-kucoin"
+	upbit "github.com/hexoul/go-upbit"
 	bittrex "github.com/toorop/go-bittrex"
 
 	"github.com/jasonlvhit/gocron"
@@ -22,6 +23,7 @@ type Clients struct {
 	bittrex   *bittrex.Bittrex
 	kucoin    *kucoin.Client
 	coinsuper *coinsuper.Client
+	upbit     *upbit.Client
 }
 
 var (

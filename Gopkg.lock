@@ -105,6 +105,14 @@
   version = "v0.1.2"
 
 [[projects]]
+  digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
+  name = "github.com/dgrijalva/jwt-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
+  version = "v3.2.0"
+
+[[projects]]
   digest = "1:2694597a20d303502ad1b7f1cc688977c7dc34da732ccf4d27e98b552cceed5b"
   name = "github.com/disintegration/imaging"
   packages = ["."]
@@ -216,6 +224,18 @@
   pruneopts = "UT"
   revision = "f087846327399d1f05018ea3fa4d3f4936493afe"
   version = "v0.2.1"
+
+[[projects]]
+  digest = "1:e144fa97c0b7dfc9f8b7748e906c9cd4ae2dd4f69bc88c6243d3aa3e055d054b"
+  name = "github.com/hexoul/go-upbit"
+  packages = [
+    ".",
+    "types",
+    "util",
+  ]
+  pruneopts = "UT"
+  revision = "36062ab1c427e6bcf564c2036d4f61780afa4920"
+  version = "v0.1.0"
 
 [[projects]]
   branch = "master"
@@ -567,6 +587,7 @@
     "github.com/hexoul/go-coinmarketcap/types",
     "github.com/hexoul/go-coinsuper",
     "github.com/hexoul/go-kucoin",
+    "github.com/hexoul/go-upbit",
     "github.com/jasonlvhit/gocron",
     "github.com/sirupsen/logrus",
     "github.com/toorop/go-bittrex",

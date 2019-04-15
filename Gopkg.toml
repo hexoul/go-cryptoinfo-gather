@@ -40,6 +40,10 @@
    name = "github.com/hexoul/go-kucoin"
    version = "0.2.1"
 
+[[constraint]]
+   name = "github.com/hexoul/go-upbit"
+   version = "0.1.0"
+
 [prune]
   go-tests = true
   unused-packages = true

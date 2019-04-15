@@ -12,6 +12,7 @@ import (
 	abccTypes "github.com/hexoul/go-abcc/types"
 	coinsuper "github.com/hexoul/go-coinsuper"
 	kucoin "github.com/hexoul/go-kucoin"
+	upbit "github.com/hexoul/go-upbit"
 	bittrex "github.com/toorop/go-bittrex"
 
 	log "github.com/sirupsen/logrus"
@@ -157,12 +158,32 @@ func getBittrexBalnace(b *bittrex.Bittrex) (meta, eth, btc float64) {
 	return
 }
 
+func getUpbitBalnace() (meta, eth, btc float64) {
+	if upbit.GetInstance() == nil {
+		return
+	}
+	if ret, err := upbit.GetInstance().Accounts(); err == nil {
+		for _, v := range ret {
+			if v.Currency == "META" {
+				meta = sumStrFloat(v.Balance, v.Locked)
+			} else if v.Currency == "ETH" {
+				eth = sumStrFloat(v.Balance, v.Locked)
+			} else if v.Currency == "BTC" {
+				btc = sumStrFloat(v.Balance, v.Locked)
+			}
+		}
+		logBalance("upbit", meta, eth, btc)
+	}
+	return
+}
+
 // GetBalances records balances
 func (c *Clients) GetBalances() {
 	getKucoinBalnace()
 	getCoinsuperBalnace()
 	getAbccBalnace()
 	getBittrexBalnace(c.bittrex)
+	getUpbitBalnace()
 }
 
 func logTrade(pair, exchange, orderID, side, createdAt string, price, amount, fee, volume float64) {

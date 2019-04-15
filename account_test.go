@@ -22,6 +22,11 @@ func TestBittrexBalance(t *testing.T) {
 	t.Log(meta, eth, btc)
 }
 
+func TestUpbitBalance(t *testing.T) {
+	meta, eth, btc := getUpbitBalnace()
+	t.Log(meta, eth, btc)
+}
+
 func TestGetBalances(t *testing.T) {
 	testClients.GetBalances()
 }

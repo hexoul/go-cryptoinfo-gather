@@ -4,6 +4,7 @@ import (
 	abcc "github.com/hexoul/go-abcc"
 	coinsuper "github.com/hexoul/go-coinsuper"
 	kucoin "github.com/hexoul/go-kucoin"
+	upbit "github.com/hexoul/go-upbit"
 	bittrex "github.com/toorop/go-bittrex"
 )
 
@@ -35,4 +36,5 @@ func init() {
 	testClients.abcc = abcc.GetInstanceWithKey(testAccessKey["abcc"], testSecretKey["abcc"])
 	testClients.coinsuper = coinsuper.GetInstanceWithKey(testAccessKey["coinsuper"], testSecretKey["coinsuper"])
 	testClients.bittrex = bittrex.New(testAccessKey["bittrex"], testSecretKey["bittrex"])
+	testClients.upbit = upbit.GetInstanceWithKey(testAccessKey["upbit"], testSecretKey["upbit"])
 }
