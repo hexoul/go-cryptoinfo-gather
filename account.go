@@ -247,11 +247,19 @@ func getBittrexTrades(b *bittrex.Bittrex, pair string) {
 	if b == nil {
 		return
 	}
-	// if orders, err := b.GetOrderHistory("BTC-META"); err == nil {
-	// 	for _, v := range orders {
-
-	// 	}
-	// }
+	if orders, err := b.GetOrderHistory("BTC-META"); err == nil {
+		for _, v := range orders {
+			if r, _ := v.QuantityRemaining.Float64(); r > 0 {
+				continue
+			}
+			time, _ := v.TimeStamp.MarshalJSON()
+			price, _ := v.PricePerUnit.Float64()
+			volume, _ := v.Price.Float64()
+			quantity, _ := v.Quantity.Float64()
+			fee, _ := v.Commission.Float64()
+			logTrade(pair, "bittrex", v.OrderUuid, v.OrderType, strings.Split(string(time), "\"")[1], price, quantity, fee, volume)
+		}
+	}
 }
 
 func getUpbitTrades(pair string) {
