@@ -183,7 +183,7 @@ func (c *Clients) GetBalances() {
 	getKucoinBalnace()
 	getCoinsuperBalnace()
 	getAbccBalnace()
-	getBittrexBalnace(c.bittrex)
+	// getBittrexBalnace(c.bittrex)
 	getUpbitBalnace()
 }
 
@@ -267,8 +267,9 @@ func getUpbitTrades(pair string) {
 		return
 	}
 	if ret, err := upbit.GetInstance().GetOrders(&upbitTypes.Options{
-		Market: pair,
-		State:  upbitTypes.StateOptions.Done,
+		Market:  pair,
+		State:   upbitTypes.StateOptions.Done,
+		OrderBy: "desc",
 	}); err == nil {
 		for _, v := range ret {
 			if !checkExistOrder(v.UUID) {
@@ -288,6 +289,6 @@ func (c *Clients) GetTrades() {
 	getKucoinTrades(strings.ToUpper(targetSymbol) + "-ETH")
 	getAbccTrades(strings.ToLower(targetSymbol) + "eth")
 	btcMeta := "BTC-" + strings.ToUpper(targetSymbol)
-	getBittrexTrades(c.bittrex, btcMeta)
+	// getBittrexTrades(c.bittrex, btcMeta)
 	getUpbitTrades(btcMeta)
 }
