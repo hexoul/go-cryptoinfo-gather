@@ -13,13 +13,14 @@ import (
 	coinsuper "github.com/hexoul/go-coinsuper"
 	kucoin "github.com/hexoul/go-kucoin"
 	upbit "github.com/hexoul/go-upbit"
+	upbitTypes "github.com/hexoul/go-upbit/types"
 	bittrex "github.com/toorop/go-bittrex"
 
 	log "github.com/sirupsen/logrus"
 )
 
 const (
-	existLen = 1000
+	existLen = 10000
 )
 
 var (
@@ -242,8 +243,30 @@ func getAbccTrades(pair string) {
 	}
 }
 
+func getUpbitTrades(pair string) {
+	if upbit.GetInstance() == nil {
+		return
+	}
+	if ret, err := upbit.GetInstance().GetOrders(&upbitTypes.Options{
+		Market: pair,
+		State:  upbitTypes.StateOptions.Done,
+	}); err == nil {
+		for _, v := range ret {
+			if !checkExistOrder(v.UUID) {
+				price, err1 := strconv.ParseFloat(v.Price, 32)
+				fee, err2 := strconv.ParseFloat(v.PaidFee, 32)
+				volume, err3 := strconv.ParseFloat(v.ExecutedVolume, 32)
+				if err1 == nil && err2 == nil && err3 == nil {
+					logTrade(pair, "upbit", v.UUID, v.Side, v.CreatedAt, price, volume, fee, price*volume)
+				}
+			}
+		}
+	}
+}
+
 // GetTrades records trades
 func (c *Clients) GetTrades() {
 	getKucoinTrades(strings.ToUpper(targetSymbol) + "-ETH")
 	getAbccTrades(strings.ToLower(targetSymbol) + "eth")
+	getUpbitTrades("BTC-" + strings.ToUpper(targetSymbol))
 }
