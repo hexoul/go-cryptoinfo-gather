@@ -243,6 +243,17 @@ func getAbccTrades(pair string) {
 	}
 }
 
+func getBittrexTrades(b *bittrex.Bittrex, pair string) {
+	if b == nil {
+		return
+	}
+	// if orders, err := b.GetOrderHistory("BTC-META"); err == nil {
+	// 	for _, v := range orders {
+
+	// 	}
+	// }
+}
+
 func getUpbitTrades(pair string) {
 	if upbit.GetInstance() == nil {
 		return
@@ -268,5 +279,7 @@ func getUpbitTrades(pair string) {
 func (c *Clients) GetTrades() {
 	getKucoinTrades(strings.ToUpper(targetSymbol) + "-ETH")
 	getAbccTrades(strings.ToLower(targetSymbol) + "eth")
-	getUpbitTrades("BTC-" + strings.ToUpper(targetSymbol))
+	btcMeta := "BTC-" + strings.ToUpper(targetSymbol)
+	getBittrexTrades(c.bittrex, btcMeta)
+	getUpbitTrades(btcMeta)
 }
